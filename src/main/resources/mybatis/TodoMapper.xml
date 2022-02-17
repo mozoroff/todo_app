@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mozoroff.todo_app.mapper.TodoMapper">
+
+    <select id="selectAll" resultType="com.mozoroff.todo_app.domain.Todo">
+        select * from todo_items
+</select>
+
+
+</mapper>
