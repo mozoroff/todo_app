@@ -4,12 +4,43 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+
+<script src="webjars/jquery/3.5.1/jquery.min.js"></script>
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+  <!-- MDB -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.9.0/mdb.min.css" rel="stylesheet" />
+
+
+<link rel="stylesheet" th:href="@{/css/style.css}" />
+
 <title>todo</title>
 </head>
 <body>
 	<h1>TodoList</h1>
 	
 	<h2>やること</h2>
+	<table class="table">
+		<thead>
+		  <tr>
+			<th scope="col">できた</th>
+			<th scope="col">やること</th>
+			<th scope="col">この日まで</th>
+			<th scope="col">ユーザID</th>
+		  </tr>
+		</thead>
+		<tbody>
+		  <tr>
+			<th scope="row">1</th>
+			<td>Mark</td>
+			<td>Otto</td>
+			<td>@mdo</td>
+		  </tr>
+		</tbody>
+	  </table>
 	<form th:action="@{/update}" method="post" th:each="todo : ${todos}">
 		<input type="hidden" name="id" th:value="${todo.id}" />
 		<p>
@@ -65,6 +96,6 @@
 	<input type="submit" value="できたものを一括削除"/>
 	</form>
 
-
+	<script type="text/javascript" th:src="@{/js/todo.js}"></script>
 </body>
 </html>
