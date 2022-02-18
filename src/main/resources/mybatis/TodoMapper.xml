@@ -2,9 +2,42 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mozoroff.todo_app.mapper.TodoMapper">
 
-    <select id="selectAll" resultType="com.mozoroff.todo_app.domain.Todo">
-        select * from todo_items
-</select>
+	<select id="selectAll"
+		resultType="com.mozoroff.todo_app.domain.Todo">
+		select * from todo_items
+	</select>
+
+	<select id="selectIncomplete"
+		resultType="com.mozoroff.todo_app.domain.Todo">
+		select * from todo_items where done_flag = 0
+	</select>
+
+	<select id="selectComplete"
+		resultType="com.mozoroff.todo_app.domain.Todo">
+		select * from todo_items where done_flag = 1
+	</select>
+
+	<insert id="add"
+		parameterType="com.mozoroff.todo_app.domain.Todo"
+		useGeneratedKeys="true">
+		insert into todo_items (title, user_id)
+		values(#{title} ,#{userId})
+	</insert>
+
+	<update id="update"
+		parameterType="com.mozoroff.todo_app.domain.Todo">
+		update todo_items
+		set
+		user_id = #{userId}
+		, title = #{title}
+		, done_flag = #{doneFlag}
+		where id = #{id}
+	</update>
+
+	<delete id="delete"
+		parameterType="com.mozoroff.todo_app.domain.Todo">
+	delete from todo_items where done_flag = 1
+	</delete>
 
 
 </mapper>
